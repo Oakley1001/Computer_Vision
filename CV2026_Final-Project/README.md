@@ -4,7 +4,6 @@
 
 論文：Depth Anything V2，NeurIPS 2024  https://arxiv.org/abs/2406.09414
 
-
 官方程式：https://github.com/DepthAnything/Depth-Anything-V2  
 
 ## 1. 結論
