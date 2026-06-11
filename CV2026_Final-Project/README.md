@@ -1,10 +1,9 @@
-# Depth Anything V2 非訓練實驗復現報告
+# Depth Anything V2 的非訓練復現與模型行為分析
 
 本資料包整理 Depth Anything V2 論文與官方程式中，在不重新訓練模型的前提下可完成的實驗。內容包含實驗參數、環境、官方模型版本、DA-2K 定量結果、影像與影片 inference、解析度縮放、metric depth、點雲、原始數值、全部實驗圖與逐圖說明。
 
-論文：Depth Anything V2，NeurIPS 2024  
+論文：Depth Anything V2，NeurIPS 2024  https://arxiv.org/abs/2406.09414
 官方程式：https://github.com/DepthAnything/Depth-Anything-V2  
-使用 commit：`a561b849ebae10a6f5ef49e26c83cbbcd36c71bf`
 
 ## 1. 結論
 
