@@ -1,0 +1,133 @@
+project:
+  paper: "Depth Anything V2"
+  venue: "NeurIPS 2024"
+  scope: "official pretrained, non-training reproduction"
+  packaged_on: "2026-06-10"
+
+official_repository:
+  url: "https://github.com/DepthAnything/Depth-Anything-V2"
+  commit: "a561b849ebae10a6f5ef49e26c83cbbcd36c71bf"
+
+hardware:
+  gpu: "NVIDIA GeForce RTX 3090"
+  vram_mib: 24576
+  driver: "590.48.01"
+
+software:
+  conda_environment: "DL"
+  python: "3.10.19"
+  pytorch: "2.5.1"
+  torchvision: "0.20.1"
+  cuda_runtime: "12.1"
+  opencv: "4.13.0"
+  numpy: "2.2.6"
+  matplotlib: "3.10.8"
+  open3d: "0.19.0"
+  xformers: false
+
+experiments:
+  da2k:
+    dataset:
+      images_with_annotations: 1033
+      pair_annotations: 2068
+      scenarios:
+        - indoor
+        - outdoor
+        - non_real
+        - transparent_reflective
+        - adverse_style
+        - aerial
+        - underwater
+        - object
+    input_size: 518
+    checkpoint_type: "relative depth"
+    evaluation_rule: "point1 is correct when predicted inverse depth(point1) > predicted inverse depth(point2)"
+    models:
+      - encoder: vits
+        parameters: "24.8M"
+        paper_accuracy_percent: 95.3
+        local_accuracy_percent: 95.21
+      - encoder: vitb
+        parameters: "97.5M"
+        paper_accuracy_percent: 97.0
+        local_accuracy_percent: 97.05
+      - encoder: vitl
+        parameters: "335.3M"
+        paper_accuracy_percent: 97.1
+        local_accuracy_percent: 97.10
+
+  relative_image_inference:
+    source_images: "official assets/examples"
+    image_count: 20
+    input_size: 518
+    output_format: "input image + 50px separator + Spectral_r relative-depth visualization"
+    models:
+      - encoder: vits
+        elapsed_seconds_for_20_images: 8.30
+      - encoder: vitb
+        elapsed_seconds_for_20_images: 9.64
+      - encoder: vitl
+        elapsed_seconds_for_20_images: 14.57
+    timing_note: "includes conda startup, checkpoint loading, image I/O, visualization, and inference"
+
+  resolution_scaling:
+    encoder: vitl
+    baseline_input_size: 518
+    scaled_input_size: 1036
+    images:
+      - demo01.jpg
+      - demo05.jpg
+      - demo10.jpg
+      - demo15.jpg
+    elapsed_seconds_for_1036_run: 13.40
+    output: "qualitative comparison"
+
+  video_inference:
+    encoder: vits
+    input_size: 518
+    videos:
+      - ferris_wheel.mp4
+      - basketball.mp4
+    output_format: "input frame + 50px separator + Spectral_r relative-depth visualization"
+    elapsed_seconds_total: 63.84
+
+  metric_depth_indoor:
+    encoder: vitl
+    training_domain_of_checkpoint: "Hypersim"
+    input: "demo10.jpg"
+    input_size: 518
+    max_depth_m: 20
+    output_shape: [1332, 2048]
+    min_depth_m: 0.8345478773
+    max_predicted_depth_m: 12.4207801819
+    mean_depth_m: 3.6436564922
+    median_depth_m: 3.7513661385
+    p05_depth_m: 0.9631448984
+    p95_depth_m: 5.5458278656
+    elapsed_seconds: 9.63
+
+  metric_depth_outdoor:
+    encoder: vitl
+    training_domain_of_checkpoint: "Virtual KITTI 2"
+    input: "demo01.jpg"
+    input_size: 518
+    max_depth_m: 80
+    output_shape: [1362, 2048]
+    min_depth_m: 4.9447627068
+    max_predicted_depth_m: 79.3469924927
+    mean_depth_m: 34.3118095398
+    median_depth_m: 33.7905616760
+    p05_depth_m: 10.3229827881
+    p95_depth_m: 63.5394859314
+    elapsed_seconds: 9.57
+
+  pointcloud:
+    encoder: vits
+    checkpoint: "Hypersim metric-depth Small"
+    input: "demo10.jpg"
+    max_depth_m: 20
+    focal_length_x: 470.4
+    focal_length_y: 470.4
+    output: "demo10.ply"
+    elapsed_seconds: 6.52
+    limitation: "ViT-L point-cloud script used original image height as inference size and caused CUDA OOM on RTX 3090."

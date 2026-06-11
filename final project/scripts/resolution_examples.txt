@@ -1,0 +1,4 @@
+assets/examples/demo01.jpg
+assets/examples/demo05.jpg
+assets/examples/demo10.jpg
+assets/examples/demo15.jpg

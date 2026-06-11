@@ -1,0 +1,118 @@
+{
+  "overall": {
+    "paper": {
+      "ViT-S": 95.3,
+      "ViT-B": 97.0,
+      "ViT-L": 97.1
+    },
+    "local": {
+      "ViT-S": 95.21,
+      "ViT-B": 97.05,
+      "ViT-L": 97.1
+    }
+  },
+  "per_scenario": {
+    "ViT-S": {
+      "Indoor": {
+        "paper": 92.9,
+        "local": 92.62
+      },
+      "Outdoor": {
+        "paper": 93.0,
+        "local": 93.31
+      },
+      "Non-real": {
+        "paper": 98.4,
+        "local": 98.35
+      },
+      "Transparent": {
+        "paper": 94.4,
+        "local": 94.39
+      },
+      "Adverse": {
+        "paper": 95.7,
+        "local": 95.12
+      },
+      "Aerial": {
+        "paper": 96.4,
+        "local": 96.39
+      },
+      "Underwater": {
+        "paper": 99.2,
+        "local": 99.15
+      },
+      "Object": {
+        "paper": 96.6,
+        "local": 97.3
+      }
+    },
+    "ViT-B": {
+      "Indoor": {
+        "paper": 96.2,
+        "local": 96.43
+      },
+      "Outdoor": {
+        "paper": 94.8,
+        "local": 94.77
+      },
+      "Non-real": {
+        "paper": 98.7,
+        "local": 98.68
+      },
+      "Transparent": {
+        "paper": 96.3,
+        "local": 96.26
+      },
+      "Adverse": {
+        "paper": 96.7,
+        "local": 96.65
+      },
+      "Aerial": {
+        "paper": 99.0,
+        "local": 99.48
+      },
+      "Underwater": {
+        "paper": 100.0,
+        "local": 100.0
+      },
+      "Object": {
+        "paper": 97.3,
+        "local": 97.3
+      }
+    },
+    "ViT-L": {
+      "Indoor": {
+        "paper": 96.4,
+        "local": 96.19
+      },
+      "Outdoor": {
+        "paper": 93.9,
+        "local": 94.48
+      },
+      "Non-real": {
+        "paper": 99.0,
+        "local": 99.01
+      },
+      "Transparent": {
+        "paper": 96.3,
+        "local": 96.26
+      },
+      "Adverse": {
+        "paper": 97.3,
+        "local": 97.26
+      },
+      "Aerial": {
+        "paper": 99.5,
+        "local": 99.48
+      },
+      "Underwater": {
+        "paper": 99.2,
+        "local": 99.15
+      },
+      "Object": {
+        "paper": 98.0,
+        "local": 97.97
+      }
+    }
+  }
+}

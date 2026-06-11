@@ -1,0 +1,38 @@
+xFormers not available
+xFormers not available
+/home/chrceu/Desktop/master/1-2/CV/final/final_proect/experiments/evaluate_da2k.py:38: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model.load_state_dict(torch.load(checkpoint, map_location="cpu"))
+processed 50/1033 images, pairs=106, acc=92.45
+processed 100/1033 images, pairs=207, acc=90.34
+processed 150/1033 images, pairs=304, acc=90.79
+processed 200/1033 images, pairs=423, acc=92.20
+processed 250/1033 images, pairs=546, acc=92.31
+processed 300/1033 images, pairs=664, acc=93.22
+processed 350/1033 images, pairs=795, acc=93.71
+processed 400/1033 images, pairs=890, acc=93.71
+processed 450/1033 images, pairs=1002, acc=93.51
+processed 500/1033 images, pairs=1079, acc=93.70
+processed 550/1033 images, pairs=1173, acc=94.12
+processed 600/1033 images, pairs=1266, acc=94.47
+processed 650/1033 images, pairs=1355, acc=94.54
+processed 700/1033 images, pairs=1459, acc=94.52
+processed 750/1033 images, pairs=1555, acc=94.47
+processed 800/1033 images, pairs=1648, acc=94.72
+processed 850/1033 images, pairs=1750, acc=94.69
+processed 900/1033 images, pairs=1852, acc=94.92
+processed 950/1033 images, pairs=1945, acc=95.06
+processed 1000/1033 images, pairs=2018, acc=95.09
+
+DA-2K accuracy
+encoder: vits
+images: 1033
+pairs: 2068
+mean: 95.21
+adverse_style: 95.12 (312/328)
+aerial: 96.39 (187/194)
+indoor: 92.62 (389/420)
+non_real: 98.35 (298/303)
+object: 97.30 (144/148)
+outdoor: 93.31 (321/344)
+transparent_reflective: 94.39 (202/214)
+underwater: 99.15 (116/117)

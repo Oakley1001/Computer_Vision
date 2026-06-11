@@ -1,0 +1,12 @@
+experiment,model_or_setting,paper_result,local_result,difference_or_observation
+DA-2K overall,ViT-S,95.3%,95.21%,-0.09 percentage point
+DA-2K overall,ViT-B,97.0%,97.05%,+0.05 percentage point
+DA-2K overall,ViT-L,97.1%,97.10%,0.00 percentage point
+Relative image inference,ViT-S 518,"Paper Figure 1 reports 60 ms on V100","8.30 s for 20 images end-to-end","Not directly comparable; local time includes startup, loading, I/O, and visualization"
+Relative image inference,ViT-B 518,No paper latency reported for this exact local pipeline,"9.64 s for 20 images end-to-end","Qualitative output reproduced"
+Relative image inference,ViT-L 518,"Paper Figure 1 reports 213 ms on V100","14.57 s for 20 images end-to-end","Not directly comparable; local time includes startup, loading, I/O, and visualization"
+Resolution scaling,ViT-L 518 to 1036,"Appendix Figure 11 reports sharper details at larger test resolution","Four images completed; 1036 run took 13.40 s","Qualitative behavior is consistent"
+Video inference,ViT-S 518,"Official repo provides video inference; paper has no directly matched table","Two official videos completed in 63.84 s","Qualitative demo only"
+Metric depth indoor,Hypersim ViT-L max 20m,"Paper Section 7.3 and Figure 15 describe synthetic-domain metric models","Mean 3.6437m; median 3.7514m; range 0.8345-12.4208m","Official metric checkpoint inference reproduced; not Table 4 training"
+Metric depth outdoor,VKITTI ViT-L max 80m,"Paper Section 7.3 and Figure 15 describe synthetic-domain metric models","Mean 34.3118m; median 33.7906m; range 4.9448-79.3470m","Official metric checkpoint inference reproduced; not Table 4 training"
+Point cloud,Hypersim ViT-S,"Official repository utility; no matching paper quantitative table","demo10.ply generated successfully in 6.52 s","ViT-L full-resolution run caused OOM on RTX 3090"
