@@ -138,6 +138,22 @@
 
 20 個場景和所有 80 張輸入/輸出圖的說明見 [`FIGURE_DESCRIPTIONS.md`](FIGURE_DESCRIPTIONS.md)。
 
+### 5.2 Self-captured image stress test
+
+除了官方 `assets/examples` 的 20 張測試圖外，本專案另外加入自拍手機照片，作為 real-world qualitative stress test。這些影像不是論文 benchmark，也沒有 ground-truth depth，因此不進行 accuracy 計算；目的在於觀察官方 pretrained model 在非受控拍攝條件下的深度估計行為。
+
+自拍影像包含以下類型：
+
+* close-up objects with defocused backgrounds：近距離物體、食物、動物與背景失焦影像，用來觀察 foreground-background separation。
+* urban street and object-scale scenes：街景、車輛、建築與巷弄，用來觀察模型是否能掌握道路、建築與物體尺度形成的 global scene layout。
+* low-light and long-range night scenes：夜景、城市燈光與遠距離建築，用來觀察低光源與遠距離場景下的深度壓縮現象。
+* strong illumination, glare, and lens flare：強光、逆光、水面反射與 lens flare，用來觀察 illumination artifacts 對 depth prediction 的影響。
+* reflective, transparent, and through-window scenes：玻璃、窗戶、鏡面或反射表面，用來觀察外觀與實際物理深度不一致時的模型行為。
+* large-scale outdoor and distant scenes：海岸、遠方小島、郵輪與大型戶外場景，用來觀察大尺度場景與遠距離區域的 depth ordering。
+
+Depth Anything V2 在自拍手機照片上通常能保留合理的 foreground-background ordering 與 global layout。例如近距離物體通常會被預測為較近，遠方天空、海面或背景建築則被預測為較遠。然而，夜景、強光、lens flare、反射表面、背景失焦與非常遠的區域會降低局部深度可靠性。結果顯示模型具有不錯的 real-world generalization，但輸出仍應解讀為 qualitative relative-depth estimate，而不是準確的 metric 3D measurement。
+
+
 ## 6. Test-time resolution scaling
 
 - 模型：ViT-L
